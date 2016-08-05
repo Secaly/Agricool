@@ -37,6 +37,7 @@ def index():
 	"""
 	i = 0
 	sporulation_oidium = []
+	last_time = datetime.strptime(date_humidity[0], '%d/%m/%Y %H:%M:%S')
 	for date in date_humidity:
 		new_time = datetime.strptime(date_humidity[i], '%d/%m/%Y %H:%M:%S')
 		if humidity[i] < 90:
@@ -56,13 +57,13 @@ def index():
 	"""
 	i = 0
 	botrytis = []
+	last_time = datetime.strptime(date_humidity[0], '%d/%m/%Y %H:%M:%S')
 	for date in date_humidity:
 		new_time = datetime.strptime(date_humidity[i], '%d/%m/%Y %H:%M:%S')
 		if humidity[i] < 90 or temperature[i] <= 15 or temperature[i] >= 20:
 			last_time = datetime.strptime(date_humidity[i], '%d/%m/%Y %H:%M:%S')
 		time_difference = new_time - last_time
 		time_difference_in_minutes = time_difference.total_seconds() / 60
-		print(time_difference_in_minutes)
 		if time_difference_in_minutes > 360:
 			botrytis.append(1)
 		elif humidity[i] > 90 and temperature[i] > 15 or temperature[i] < 20:
@@ -76,6 +77,7 @@ def index():
 	"""
 	i = 0
 	developpment_oidium = []
+	last_time = datetime.strptime(date_humidity[0], '%d/%m/%Y %H:%M:%S')
 	for date in date_humidity:
 		new_time = datetime.strptime(date_humidity[i], '%d/%m/%Y %H:%M:%S')
 		if sporulation_oidium[i] != 1 or temperature[i] <= 20:
