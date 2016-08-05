@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Agricool</title>      <!-- import plugin script -->
+	<script src='static/Chart.min.js'></script>
+</head>
+<body>
+	<h1>Agricool</h1><!-- bar chart canvas element -->
+	<canvas id="temperature" width="100%" height="50%"></canvas>
+	<canvas id="humidity" width="100%" height="50%"></canvas>
+	<canvas id="sporulation_oidium" width="100%" height="50%"></canvas>
+	<canvas id="botrytis" width="100%" height="50%"></canvas>
+	<canvas id="developpment_oidium" width="100%" height="50%"></canvas>
+	<script>
+	var ctx = document.getElementById("temperature");
+	var temperature = new Chart(ctx, {
+	    type: 'bar',
+	    data: {
+	        labels: [{% for item in labels_temperature %}
+                  "{{item}}",
+              {% endfor %}],
+	        datasets: [{
+	            label: 'Temperature',
+	            data: [{% for item in values_temperature %}
+                      "{{item}}",
+                    {% endfor %}],
+	            backgroundColor: [
+					{% for item in labels_temperature %}
+	                'rgba(255, 99, 132, 0.2)',
+					{% endfor %}
+	            ],
+	            borderColor: [
+					{% for item in labels_temperature %}
+	                'rgba(255, 99, 132,1)',
+					{% endfor %}
+	            ],
+	            borderWidth: 1
+	        }]
+	    },
+	    options: {
+	        scales: {
+	            yAxes: [{
+	                ticks: {
+	                    beginAtZero:true
+	                }
+	            }]
+	        }
+	    }
+	});
+	</script>
+	<script>
+	var ctx = document.getElementById("humidity");
+	var humidity = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [{% for item in labels_humidity %}
+				  "{{item}}",
+			  {% endfor %}],
+			datasets: [{
+				label: 'Humidity',
+				data: [{% for item in values_humidity %}
+					  "{{item}}",
+					{% endfor %}],
+				backgroundColor: [
+					{% for item in labels_humidity %}
+					'rgba(67, 169, 248, 0.2)',
+					{% endfor %}
+				],
+				borderColor: [
+					{% for item in labels_humidity %}
+					'rgba(67, 169, 248,1)',
+					{% endfor %}
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						beginAtZero:true
+					}
+				}]
+			}
+		}
+	});
+	</script>
+	<script>
+	var ctx = document.getElementById("sporulation_oidium");
+	var humidity = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [{% for item in labels_humidity %}
+				  "{{item}}",
+			  {% endfor %}],
+			datasets: [{
+				label: 'Sporulation Oidium',
+				data: [{% for item in values_sporulation_oidium %}
+					  "{{item}}",
+					{% endfor %}],
+				backgroundColor: [
+					{% for item in labels_humidity %}
+					'rgba(40,151,40, 0.2)',
+					{% endfor %}
+				],
+				borderColor: [
+					{% for item in labels_humidity %}
+					'rgba(40,151,40,1)',
+					{% endfor %}
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						suggestedMax:1,
+						beginAtZero:true
+					}
+				}]
+			}
+		}
+	});
+	</script>
+	<script>
+	var ctx = document.getElementById("botrytis");
+	var humidity = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [{% for item in labels_humidity %}
+				  "{{item}}",
+			  {% endfor %}],
+			datasets: [{
+				label: 'Botrytis',
+				data: [{% for item in values_botrytis %}
+					  "{{item}}",
+					{% endfor %}],
+				backgroundColor: [
+					{% for item in labels_humidity %}
+					'rgba(0,255,1, 0.2)',
+					{% endfor %}
+				],
+				borderColor: [
+					{% for item in labels_humidity %}
+					'rgba(0,255,1,1)',
+					{% endfor %}
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						suggestedMax:1,
+						beginAtZero:true
+					}
+				}]
+			}
+		}
+	});
+	</script>
+	<script>
+	var ctx = document.getElementById("developpment_oidium");
+	var humidity = new Chart(ctx, {
+		type: 'bar',
+		data: {
+			labels: [{% for item in labels_humidity %}
+				  "{{item}}",
+			  {% endfor %}],
+			datasets: [{
+				label: 'Developpment Oidium',
+				data: [{% for item in values_developpment_oidium %}
+					  "{{item}}",
+					{% endfor %}],
+				backgroundColor: [
+					{% for item in labels_humidity %}
+					'rgba(18,75,32, 0.2)',
+					{% endfor %}
+				],
+				borderColor: [
+					{% for item in labels_humidity %}
+					'rgba(18,75,32,1)',
+					{% endfor %}
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				yAxes: [{
+					ticks: {
+						suggestedMax:1,
+						beginAtZero:true
+					}
+				}]
+			}
+		}
+	});
+	</script>
+	</body>
+</html>
